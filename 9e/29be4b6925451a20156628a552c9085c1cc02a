@@ -1,0 +1,30 @@
+CHANGELOG.md
+  h_ee8a6db81c66e8 8-13
+openspec/changes/explorer-open-in-new-window/design.md
+  h_ee8a6db81c66e8 70-73,83
+openspec/changes/explorer-open-in-new-window/specs/open-in-new-window/spec.md
+  h_ee8a6db81c66e8 38-51
+openspec/changes/explorer-open-in-new-window/tasks.md
+  h_ee8a6db81c66e8 3,5-8,26-29,33
+package.json
+  h_ee8a6db81c66e8 5
+src/core/paths.ts
+  h_ee8a6db81c66e8 4-5,7,11-12,15,21-24
+src/core/plan.ts
+  h_ee8a6db81c66e8 19
+src/test/paths.test.ts
+  h_ee8a6db81c66e8 8,13,18,21-28
+src/test/plan.test.ts
+  h_ee8a6db81c66e8 31-33
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "9e29be4b6925451a20156628a552c9085c1cc02a",
+  "prompts": {},
+  "humans": {
+    "h_ee8a6db81c66e8": {
+      "author": "phyloong <phyloong@outlook.com>"
+    }
+  }
+}
