@@ -1,0 +1,57 @@
+name: CI
+
+# Runs the same chain a maintainer runs before a release: type check, lint,
+# extension-host tests, then the packaged VSIX. The release workflow repeats it
+# against the tag it publishes, so a broken package cannot ship.
+on:
+  push:
+    branches:
+      - '**'
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: Verify and package
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out
+        uses: actions/checkout@v7
+
+      - name: Set up Node
+        uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Type check
+        run: npm run check-types
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Extension-host tests
+        run: |
+          # The tests launch a real VS Code instance, which needs a display.
+          sudo apt-get update
+          sudo apt-get install -y xvfb
+          xvfb-run -a npm test
+
+      - name: Package
+        run: npx --yes @vscode/vsce@^4 package --out new-window-here.vsix
+
+      - name: Inspect the package
+        run: unzip -l new-window-here.vsix
+
+      - name: Upload the package
+        uses: actions/upload-artifact@v7
+        with:
+          name: vsix
+          path: new-window-here.vsix
+          if-no-files-found: error

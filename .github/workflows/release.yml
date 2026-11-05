@@ -1,0 +1,109 @@
+name: Release
+
+# Publishing runs on a version tag, or on demand from the Actions tab. Either
+# way the job re-runs the verification chain and publishes the artifact it just
+# tested, so a broken package cannot ship.
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: Verify and package
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out
+        uses: actions/checkout@v7
+
+      - name: Set up Node
+        uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Type check
+        run: npm run check-types
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Extension-host tests
+        run: |
+          # The tests launch a real VS Code instance, which needs a display.
+          sudo apt-get update
+          sudo apt-get install -y xvfb
+          xvfb-run -a npm test
+
+      - name: Package
+        run: npx --yes @vscode/vsce@^4 package --out new-window-here.vsix
+
+      - name: Inspect the package
+        run: unzip -l new-window-here.vsix
+
+      - name: Upload the package
+        uses: actions/upload-artifact@v7
+        with:
+          name: vsix
+          path: new-window-here.vsix
+          if-no-files-found: error
+
+  publish:
+    name: Publish to the Marketplace
+    needs: verify
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      # Required for trusted publishing: vsce exchanges this job's OIDC token
+      # with the Marketplace, so no long-lived token is stored in the repository.
+      id-token: write
+    steps:
+      - name: Check out
+        uses: actions/checkout@v7
+
+      - name: Set up Node
+        uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+          cache: npm
+
+      - name: Download the tested package
+        uses: actions/download-artifact@v8
+        with:
+          name: vsix
+
+      - name: Check that the tag matches package.json
+        run: |
+          version="$(node -p "require('./package.json').version")"
+          if [ "$GITHUB_REF_TYPE" = "tag" ]; then
+            # A tag push, or a manual run started from the tag: the tag is the
+            # release identity, so it must name exactly this version.
+            test "v$version" = "$GITHUB_REF_NAME"
+            echo "Tag $GITHUB_REF_NAME matches package.json $version."
+          else
+            # A manual run from a branch has no tag to compare against; the
+            # package version is the release identity and the Marketplace
+            # rejects a version that already exists.
+            echo "Manual run from $GITHUB_REF_NAME: publishing package.json version $version."
+          fi
+
+      - name: Report the artifact that would be published
+        run: |
+          ls -l ./*.vsix
+          sha256sum ./*.vsix
+          unzip -l ./*.vsix
+
+      - name: Publish
+        # Trusted publishing through the GitHub OIDC token. Before the first
+        # run, the publisher must define a Trusted Publishing policy in the
+        # Marketplace naming this repository and this workflow file
+        # (release.yml); the id-token permission above is what makes the token
+        # available to vsce.
+        run: npx --yes @vscode/vsce@^4 publish --packagePath ./*.vsix --oidc
