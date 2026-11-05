@@ -27,7 +27,7 @@ Working rules:
 - Order of work: proposal (`proposal.md`) -> spec deltas (`specs/<capability>/spec.md`) -> `design.md` when there is a real trade-off -> `tasks.md` -> implementation -> `openspec validate --strict` -> archive.
 - `openspec/specs/` is the source of truth for shipped behaviour and is edited by `openspec archive`, not by hand. Behaviour changes go through a change proposal.
 - Keep `tasks.md` checkboxes current as part of the same commit as the code they describe.
-- Requirement text uses SHALL/MUST with at least one `#### Scenario:` per requirement; scenarios use Given/When/Then.
+- Requirement text uses SHALL/MUST with at least one `#### Scenario:` per requirement; each scenario carries a WHEN bullet (the trigger) and a THEN bullet (the outcome), which is what `openspec validate --strict` checks.
 - Do not invent a new capability name per feature. Prefer extending an existing capability in `openspec/specs/`; naming is part of the proposal review.
 - Never start coding from a chat instruction alone. If a request has no matching change, create the change first and confirm scope.
 
@@ -60,11 +60,11 @@ openspec/             specs/ + changes/
 Module boundaries to follow as they appear. Create them only when a change needs them:
 
 ```
-src/commands/         one file per command, thin adapters over core
-src/core/window/      window-opening strategies (folder, file, remote, WSL, SSH)
-src/core/uri/         pure parsing and rebuilding of vscode-remote/file URIs
-src/config/           typed accessors for contributes.configuration
-src/log/              OutputChannel-based logging
+src/commands/         one handler per contributed command, thin adapters over core
+src/core/paths.ts     parent-directory and path helpers
+src/core/plan.ts      folder/file target planning, pure and unit-tested
+src/config/           typed accessors for contributes.configuration (when needed)
+src/log/              OutputChannel-based logging (when needed)
 ```
 
 ## Commands
@@ -87,16 +87,22 @@ Notes:
 - `@vscode/test-electron` downloads a VS Code build on first test run and caches it in `.vscode-test/`.
 - The bundle runs from `dist/`, tests run from `out/`. Both are gitignored.
 
-Press F5 to launch the Extension Development Host; the default build task keeps tsc and esbuild watching. Integration tests are the only way to exercise activation, command registration and real window behaviour, so keep logic that does not need `vscode` free of that import.
+Press F5 to launch the Extension Development Host; the default build task keeps tsc and esbuild watching. Integration tests are the only way to exercise activation, command registration and real window behaviour, so keep logic that needs only `vscode.Uri` in `src/core/` and avoid pulling other `vscode` APIs into it.
 
 ## Architecture constraints to design around
 
 - Extension host is a Node process with no DOM. Anything user-visible outside the editor must go through the VS Code API; do not shell out to the `code` CLI.
-- Two different mechanisms exist for "open elsewhere" and they are not interchangeable: `vscode.openFolder` with `{ forceNewWindow: true }` for local folders, and `vscode.env.openExternal` for `vscode-remote://` URIs. Which one applies is decided by the URI scheme, not by a setting.
-- URI handling is the risky core: Windows drive letters, UNC paths, case sensitivity, WSL (`wsl+<distro>` authority), SSH, and containers all round-trip differently. Keep every transformation in `core/uri/` as pure functions so they are unit-testable without a host.
+- `vscode.openFolder` is a built-in command, not a typed API: call it with `executeCommand`, and treat its options (`forceNewWindow`, `filesToOpen`, ...) as metadata-only, since `@types/vscode` does not declare them. There is no supported way to open a bare file in a window without a folder; opening a file means opening its containing folder with `filesToOpen`.
+- Pass the resource URI to `vscode.openFolder` unchanged. The workbench's `doOpenWindow` copies the current window's `remoteAuthority` into the new window when the caller leaves the option undefined, so the new window stays on the same host. Do not rebuild `vscode-remote://` URIs: `env.remoteName` is the type only, `env.asExternalUri` returns no remote segment in Remote-SSH, and neither type definition exposes a `remoteAuthority` member. `env.openExternal` is not a substitute: the receiving instance decides whether to reuse a window.
+- URI handling is the risky core: Windows drive letters, UNC paths, case sensitivity, WSL (`wsl+<distro>` authority), SSH, and containers all round-trip differently. Keep every URI transformation in `src/core/` as a pure function, and keep the folder/file decision in `planOpen`, so both are unit-testable and the only untested line is the `executeCommand` call.
 - Command handlers stay thin. Registration, menus and keybindings live in `package.json` `contributes`; logic lives in `core/`; `extension.ts` only wires them together and disposes subscriptions.
 - Every contributed command, setting and activation event is public API: renaming one is a breaking change that needs a spec delta and a migration note.
 - Multi-root workspaces and untitled documents have no on-disk path. Handle them explicitly rather than falling back to the first workspace folder.
+
+## Versioning
+
+- Bump `version` in `package.json` for every change that produces an installable build, one patch step at a time (`0.0.1` -> `0.0.2`). The version is how an installed VSIX is told apart from the previous one: it appears in the VSIX filename and in the Extensions view.
+- Move CHANGELOG entries under the new version heading and leave `## [Unreleased]` empty until the next change starts.
 
 ## Git and commits
 

@@ -2,7 +2,7 @@ import * as assert from 'assert';
 import * as vscode from 'vscode';
 
 suite('Extension host', () => {
-  test('activates and registers the sample command', async () => {
+  test('activates and registers the open command', async () => {
     const extension = vscode.extensions.all.find(
       (candidate) => candidate.packageJSON.name === 'open-in-new-window'
     );
@@ -12,6 +12,10 @@ suite('Extension host', () => {
 
     assert.strictEqual(extension.isActive, true);
     const commands = await vscode.commands.getCommands(true);
-    assert.ok(commands.includes('openInNewWindow.helloWorld'));
+    assert.ok(commands.includes('openInNewWindow.open'), 'open command should be registered');
+    assert.ok(
+      !commands.includes('openInNewWindow.helloWorld'),
+      'placeholder command should be gone'
+    );
   });
 });

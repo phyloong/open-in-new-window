@@ -1,13 +1,10 @@
 import * as vscode from 'vscode';
+import { openInNewWindow } from './commands/openInNewWindow';
 
-const SAMPLE_COMMAND = 'openInNewWindow.helloWorld';
+const OPEN_COMMAND = 'openInNewWindow.open';
 
 export function activate(context: vscode.ExtensionContext): void {
-  context.subscriptions.push(
-    vscode.commands.registerCommand(SAMPLE_COMMAND, () => {
-      void vscode.window.showInformationMessage('Open in New Window is active.');
-    })
-  );
+  context.subscriptions.push(vscode.commands.registerCommand(OPEN_COMMAND, openInNewWindow));
 }
 
 export function deactivate(): void {}
