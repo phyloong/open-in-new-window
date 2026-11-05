@@ -1,0 +1,21 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+out/
+
+# Test artefacts
+.vscode-test/
+coverage/
+
+# Packaging
+*.vsix
+
+# Local editor state
+.DS_Store
+Thumbs.db
+*.log
+.env
+.claude/settings.local.json
+.codebuddy/settings.local.json

@@ -1,0 +1,20 @@
+.vscode/**
+.vscode-test/**
+src/**
+out/**
+node_modules/**
+.gitignore
+esbuild.js
+.vscode-test.mjs
+**/tsconfig.json
+**/eslint.config.mjs
+**/*.map
+**/*.ts
+
+# Agent and spec tooling is not extension runtime content
+.agents/**
+.claude/**
+.codebuddy/**
+.opencode/**
+openspec/**
+AGENTS.md
