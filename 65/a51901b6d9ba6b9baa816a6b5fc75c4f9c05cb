@@ -1,0 +1,26 @@
+CHANGELOG.md
+  h_ee8a6db81c66e8 8-13
+openspec/changes/explorer-open-in-new-window/design.md
+  h_ee8a6db81c66e8 81,87
+openspec/changes/explorer-open-in-new-window/tasks.md
+  h_ee8a6db81c66e8 29,34
+package.json
+  h_ee8a6db81c66e8 5
+src/commands/openInNewWindow.ts
+  h_ee8a6db81c66e8 3,16
+src/core/paths.ts
+  h_ee8a6db81c66e8 3-9
+src/test/paths.test.ts
+  h_ee8a6db81c66e8 3,31-37
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "65a51901b6d9ba6b9baa816a6b5fc75c4f9c05cb",
+  "prompts": {},
+  "humans": {
+    "h_ee8a6db81c66e8": {
+      "author": "phyloong <phyloong@outlook.com>"
+    }
+  }
+}
