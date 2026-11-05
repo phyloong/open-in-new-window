@@ -1,0 +1,24 @@
+.vscodeignore
+  h_ee8a6db81c66e8 20
+CHANGELOG.md
+  h_ee8a6db81c66e8 8-14
+LICENSE
+  h_ee8a6db81c66e8 1-21
+package-lock.json
+  h_ee8a6db81c66e8 3,9
+package.json
+  h_ee8a6db81c66e8 5,7-12
+resources/icon.svg
+  h_ee8a6db81c66e8 1-9
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "b415c3ea4e268f6daa92ec1435765e77718beaa9",
+  "prompts": {},
+  "humans": {
+    "h_ee8a6db81c66e8": {
+      "author": "phyloong <phyloong@outlook.com>"
+    }
+  }
+}
