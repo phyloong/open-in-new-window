@@ -1,0 +1,16 @@
+README.md
+  h_ee8a6db81c66e8 1
+package.json
+  h_ee8a6db81c66e8 3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "71011ebe9e880e463acc442ca06006eadee15a82",
+  "prompts": {},
+  "humans": {
+    "h_ee8a6db81c66e8": {
+      "author": "phyloong <phyloong@outlook.com>"
+    }
+  }
+}
