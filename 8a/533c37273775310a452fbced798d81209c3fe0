@@ -1,0 +1,18 @@
+.github/workflows/ci.yml
+  h_ee8a6db81c66e8 1-57
+.github/workflows/release.yml
+  h_ee8a6db81c66e8 1-109
+.vscodeignore
+  h_ee8a6db81c66e8 20
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "8a533c37273775310a452fbced798d81209c3fe0",
+  "prompts": {},
+  "humans": {
+    "h_ee8a6db81c66e8": {
+      "author": "phyloong <phyloong@outlook.com>"
+    }
+  }
+}
