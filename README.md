@@ -1,4 +1,4 @@
-# Open in New Window
+# New Window Here
 
 Open a file or folder in a new VS Code window without leaving the one you are working in.
 
@@ -43,7 +43,7 @@ npm run compile            # type-check, lint, bundle to dist/
 npm run watch              # esbuild + tsc watch, used by F5
 npm test                   # integration tests in a downloaded VS Code host
 npm run package            # production bundle (minified, no source maps)
-npx @vscode/vsce package   # -> open-in-new-window-<version>.vsix
+npx @vscode/vsce package   # -> new-window-here-<version>.vsix
 ```
 
 Press F5 to launch the Extension Development Host.

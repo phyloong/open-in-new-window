@@ -76,7 +76,7 @@ npm run lint                              # eslint src
 npm run compile                           # check-types + lint + esbuild -> dist/
 npm run watch                             # tsc and esbuild watch, run by the F5 build task
 npm test                                  # pretest compiles tests and bundle, then vscode-test
-npx @vscode/vsce package                  # -> open-in-new-window-<version>.vsix
+npx @vscode/vsce package                  # -> new-window-here-<version>.vsix
 code --install-extension <file>.vsix
 ```
 

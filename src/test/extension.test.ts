@@ -4,7 +4,7 @@ import * as vscode from 'vscode';
 suite('Extension host', () => {
   test('activates and registers the open command', async () => {
     const extension = vscode.extensions.all.find(
-      (candidate) => candidate.packageJSON.name === 'open-in-new-window'
+      (candidate) => candidate.packageJSON.name === 'new-window-here'
     );
 
     assert.ok(extension, 'extension should be discoverable by name');

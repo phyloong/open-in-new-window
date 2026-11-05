@@ -1,9 +1,9 @@
 {
-  "name": "open-in-new-window",
-  "displayName": "Open in New Window",
+  "name": "new-window-here",
+  "displayName": "New Window Here",
   "description": "Open files, folders and remote contexts in a new VS Code window.",
   "version": "0.1.0",
-  "publisher": "your-publisher",
+  "publisher": "amapleaf",
   "license": "MIT",
   "repository": {
     "type": "git",
