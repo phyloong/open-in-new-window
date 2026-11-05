@@ -1,0 +1,24 @@
+README.md
+  h_ee8a6db81c66e8 1,46
+CHANGELOG.md
+  h_ee8a6db81c66e8 3
+src/test/extension.test.ts
+  h_ee8a6db81c66e8 7
+package-lock.json
+  h_ee8a6db81c66e8 2,8
+AGENTS.md
+  h_ee8a6db81c66e8 79
+package.json
+  h_ee8a6db81c66e8 2-3,6
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "fff47df395e899681e5c1fa743708e4ff4ddd467",
+  "prompts": {},
+  "humans": {
+    "h_ee8a6db81c66e8": {
+      "author": "phyloong <phyloong@outlook.com>"
+    }
+  }
+}
