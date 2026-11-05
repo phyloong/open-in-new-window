@@ -17,5 +17,7 @@ coverage/
 Thumbs.db
 *.log
 .env
-.claude/settings.local.json
-.codebuddy/settings.local.json
+# Agent entrypoints written by `openspec update`; only .agents/ is tracked
+.claude/
+.codebuddy/
+.opencode/
