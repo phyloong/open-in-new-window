@@ -1,0 +1,38 @@
+AGENTS.md
+  h_ee8a6db81c66e8 30,90
+CHANGELOG.md
+  h_ee8a6db81c66e8 8-14,32-37
+README.md
+  h_ee8a6db81c66e8 34
+openspec/changes/explorer-open-in-new-window/design.md
+  h_ee8a6db81c66e8 37,51-54,77
+openspec/changes/explorer-open-in-new-window/specs/open-in-new-window/spec.md
+  h_ee8a6db81c66e8 30
+openspec/changes/explorer-open-in-new-window/tasks.md
+  h_ee8a6db81c66e8 23
+package.json
+  h_ee8a6db81c66e8 5
+src/commands/openInNewWindow.ts
+  h_ee8a6db81c66e8 3,23-24
+src/core/paths.ts
+  h_ee8a6db81c66e8 4-5,7,12,16-27
+src/core/plan.ts
+  h_ee8a6db81c66e8 14-15,20
+src/extension.ts
+  h_ee8a6db81c66e8 7
+src/test/paths.test.ts
+  h_ee8a6db81c66e8 3,8,13,18,21-23,26-35
+src/test/plan.test.ts
+  h_ee8a6db81c66e8 8,15,25,32
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "702f1ba1f1a7ca1edd556190a559c484efe97f28",
+  "prompts": {},
+  "humans": {
+    "h_ee8a6db81c66e8": {
+      "author": "phyloong <phyloong@outlook.com>"
+    }
+  }
+}
