@@ -17,4 +17,5 @@ esbuild.js
 .codebuddy/**
 .opencode/**
 openspec/**
+resources/*.svg
 AGENTS.md

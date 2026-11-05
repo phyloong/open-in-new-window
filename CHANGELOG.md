@@ -5,6 +5,13 @@ Check [Keep a Changelog](http://keepachangelog.com/) for the recommended structu
 
 ## [Unreleased]
 
+## [0.1.0] - 2026-11-05
+
+### Added
+
+- Extension icon, shown in the Extensions view and on the Marketplace.
+- MIT licence (`LICENSE`, reflected in the Marketplace metadata).
+
 ## [0.0.5] - 2026-11-05
 
 ### Added

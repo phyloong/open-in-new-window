@@ -2,8 +2,14 @@
   "name": "open-in-new-window",
   "displayName": "Open in New Window",
   "description": "Open files, folders and remote contexts in a new VS Code window.",
-  "version": "0.0.5",
+  "version": "0.1.0",
   "publisher": "your-publisher",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/phyloong/open-in-new-window.git"
+  },
+  "icon": "resources/icon.png",
   "engines": {
     "vscode": "^1.104.0"
   },
