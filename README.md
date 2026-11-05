@@ -1,38 +1,58 @@
 # Open in New Window
 
-A VS Code extension that opens Explorer files and folders in a separate window on the same host.
+Open a file or folder in a new VS Code window without leaving the one you are working in.
 
 ## Features
 
-- Right-click a file or folder in the Explorer and choose **Open in New Window**.
-- A folder opens as the workspace root of the new window.
-- A file opens in the editor area of the new window; its containing folder becomes that window's workspace root.
-- The new window stays on the same host the action was invoked from: local stays local, WSL stays on the same distribution, SSH stays on the same host.
-- The action is hidden for virtual file systems and for multi-selection.
+- **Explorer context menu** — right-click a file or folder and choose **Open in New Window**.
+- **Folders become workspaces** — the folder you picked is the workspace root of the new window.
+- **Files open with their context** — the file opens in the editor and its containing folder becomes the workspace root, so the workspace, search and terminal in the new window point at the right place.
+- **Same host** — the new window stays where the action was invoked: local stays local, WSL stays on the same distribution, Remote-SSH stays on the same host.
+- **Stays out of the way** — the entry is hidden for multi-selection and for virtual file systems it cannot open.
 
-Not handled yet: converting between hosts (local to WSL, WSL to SSH), carrying editor state into the new window, and opening `.code-workspace` files as workspaces.
+## Usage
+
+1. Right-click a file or folder in the Explorer.
+2. Choose **Open in New Window**.
+
+The command needs a target, so it is deliberately absent from the Command Palette. If the target cannot be read, the extension reports the failure in an error notification and no window opens.
+
+## Requirements
+
+- VS Code 1.104 or newer.
+- Nothing else to install. It works in local windows and in existing remote windows (WSL, Remote-SSH).
+
+## Known limitations
+
+- **No host switching.** The new window stays on the host you invoked it from: there is no local to WSL, WSL to SSH or SSH to container conversion. Open a window on the other host first, then use the extension there.
+- **No state hand-off.** The new window opens the target only; unsaved editors, breakpoints and terminals are not carried over.
+- **`.code-workspace` files open as files.** Their containing folder becomes the workspace root and the workspace file is not applied.
+- **Explorer only.** There is no Command Palette entry, because the command needs a resource to open.
+
+## License
+
+MIT — see [LICENSE](LICENSE).
 
 ## Development
 
-Requirements: Node.js 20 or newer and VS Code 1.104 or newer.
+Requires Node.js 20 or newer.
 
 ```bash
 npm install
-npm run compile      # type-check, lint, bundle to dist/
-npm run watch        # esbuild + tsc in watch mode, used by F5
-npm test             # integration tests in a downloaded VS Code host
-npm run package      # production bundle, then VSIX via vsce
+npm run compile            # type-check, lint, bundle to dist/
+npm run watch              # esbuild + tsc watch, used by F5
+npm test                   # integration tests in a downloaded VS Code host
+npm run package            # production bundle (minified, no source maps)
+npx @vscode/vsce package   # -> open-in-new-window-<version>.vsix
 ```
 
-Press F5 in VS Code to launch the Extension Development Host.
-
-## Layout
+Press F5 to launch the Extension Development Host.
 
 ```
-src/extension.ts        activation entry point
-src/commands/           one handler per contributed command
-src/core/               path helpers and open planning, no command wiring
-src/test/               integration tests (mocha, run by @vscode/test-cli)
-dist/                   bundled extension (gitignored)
-openspec/               specs and in-flight changes
+src/extension.ts   activation entry point, wiring only
+src/commands/      one handler per contributed command
+src/core/          path helpers and open planning, unit-tested
+src/test/          integration tests (mocha, run by @vscode/test-cli)
 ```
+
+Behaviour is specified under `openspec/`; a behaviour change goes through a change proposal there before it is implemented.
