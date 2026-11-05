@@ -1,0 +1,144 @@
+.agents/skills/.openspec-target
+  h_ee8a6db81c66e8 1
+.agents/skills/openspec-apply-change/SKILL.md
+  h_ee8a6db81c66e8 1-206
+.agents/skills/openspec-archive-change/SKILL.md
+  h_ee8a6db81c66e8 1-221
+.agents/skills/openspec-explore/SKILL.md
+  h_ee8a6db81c66e8 1-356
+.agents/skills/openspec-propose/SKILL.md
+  h_ee8a6db81c66e8 1-175
+.agents/skills/openspec-sync-specs/SKILL.md
+  h_ee8a6db81c66e8 1-290
+.agents/skills/openspec-update-change/SKILL.md
+  h_ee8a6db81c66e8 1-109
+.claude/commands/opsx/apply.md
+  h_ee8a6db81c66e8 1-202
+.claude/commands/opsx/archive.md
+  h_ee8a6db81c66e8 1-264
+.claude/commands/opsx/explore.md
+  h_ee8a6db81c66e8 1-241
+.claude/commands/opsx/propose.md
+  h_ee8a6db81c66e8 1-171
+.claude/commands/opsx/sync.md
+  h_ee8a6db81c66e8 1-286
+.claude/commands/opsx/update.md
+  h_ee8a6db81c66e8 1-105
+.claude/skills/openspec-apply-change/SKILL.md
+  h_ee8a6db81c66e8 1-206
+.claude/skills/openspec-archive-change/SKILL.md
+  h_ee8a6db81c66e8 1-221
+.claude/skills/openspec-explore/SKILL.md
+  h_ee8a6db81c66e8 1-356
+.claude/skills/openspec-propose/SKILL.md
+  h_ee8a6db81c66e8 1-175
+.claude/skills/openspec-sync-specs/SKILL.md
+  h_ee8a6db81c66e8 1-290
+.claude/skills/openspec-update-change/SKILL.md
+  h_ee8a6db81c66e8 1-109
+.codebuddy/commands/opsx/apply.md
+  h_ee8a6db81c66e8 1-200
+.codebuddy/commands/opsx/archive.md
+  h_ee8a6db81c66e8 1-262
+.codebuddy/commands/opsx/explore.md
+  h_ee8a6db81c66e8 1-239
+.codebuddy/commands/opsx/propose.md
+  h_ee8a6db81c66e8 1-169
+.codebuddy/commands/opsx/sync.md
+  h_ee8a6db81c66e8 1-284
+.codebuddy/commands/opsx/update.md
+  h_ee8a6db81c66e8 1-103
+.codebuddy/skills/openspec-apply-change/SKILL.md
+  h_ee8a6db81c66e8 1-206
+.codebuddy/skills/openspec-archive-change/SKILL.md
+  h_ee8a6db81c66e8 1-221
+.codebuddy/skills/openspec-explore/SKILL.md
+  h_ee8a6db81c66e8 1-356
+.codebuddy/skills/openspec-propose/SKILL.md
+  h_ee8a6db81c66e8 1-175
+.codebuddy/skills/openspec-sync-specs/SKILL.md
+  h_ee8a6db81c66e8 1-290
+.codebuddy/skills/openspec-update-change/SKILL.md
+  h_ee8a6db81c66e8 1-109
+.gitignore
+  h_ee8a6db81c66e8 1-21
+.opencode/commands/opsx-apply.md
+  h_ee8a6db81c66e8 1-199
+.opencode/commands/opsx-archive.md
+  h_ee8a6db81c66e8 1-261
+.opencode/commands/opsx-explore.md
+  h_ee8a6db81c66e8 1-238
+.opencode/commands/opsx-propose.md
+  h_ee8a6db81c66e8 1-168
+.opencode/commands/opsx-sync.md
+  h_ee8a6db81c66e8 1-283
+.opencode/commands/opsx-update.md
+  h_ee8a6db81c66e8 1-102
+.opencode/skills/openspec-apply-change/SKILL.md
+  h_ee8a6db81c66e8 1-206
+.opencode/skills/openspec-archive-change/SKILL.md
+  h_ee8a6db81c66e8 1-221
+.opencode/skills/openspec-explore/SKILL.md
+  h_ee8a6db81c66e8 1-356
+.opencode/skills/openspec-propose/SKILL.md
+  h_ee8a6db81c66e8 1-175
+.opencode/skills/openspec-sync-specs/SKILL.md
+  h_ee8a6db81c66e8 1-290
+.opencode/skills/openspec-update-change/SKILL.md
+  h_ee8a6db81c66e8 1-109
+.vscode-test.mjs
+  h_ee8a6db81c66e8 1-5
+.vscode/extensions.json
+  h_ee8a6db81c66e8 1-5
+.vscode/launch.json
+  h_ee8a6db81c66e8 1-17
+.vscode/settings.json
+  h_ee8a6db81c66e8 1-13
+.vscode/tasks.json
+  h_ee8a6db81c66e8 1-39
+.vscodeignore
+  h_ee8a6db81c66e8 1-20
+AGENTS.md
+  h_ee8a6db81c66e8 1-109
+CHANGELOG.md
+  h_ee8a6db81c66e8 1-8
+README.md
+  h_ee8a6db81c66e8 1-26
+esbuild.js
+  h_ee8a6db81c66e8 1-54
+eslint.config.mjs
+  h_ee8a6db81c66e8 1-28
+openspec/changes/scaffold-extension/.openspec.yaml
+  h_ee8a6db81c66e8 1-3
+openspec/changes/scaffold-extension/README.md
+  h_ee8a6db81c66e8 1-3
+openspec/changes/scaffold-extension/design.md
+  h_ee8a6db81c66e8 1-54
+openspec/changes/scaffold-extension/proposal.md
+  h_ee8a6db81c66e8 1-29
+openspec/changes/scaffold-extension/tasks.md
+  h_ee8a6db81c66e8 1-27
+openspec/config.yaml
+  h_ee8a6db81c66e8 1-28
+package-lock.json
+  h_ee8a6db81c66e8 1-3806
+package.json
+  h_ee8a6db81c66e8 1-61
+src/extension.ts
+  h_ee8a6db81c66e8 1-13
+src/test/extension.test.ts
+  h_ee8a6db81c66e8 1-17
+tsconfig.json
+  h_ee8a6db81c66e8 1-16
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "7ee72279ff5332fb769103c5ab3ee58a70eefe51",
+  "prompts": {},
+  "humans": {
+    "h_ee8a6db81c66e8": {
+      "author": "phyloong <phyloong@outlook.com>"
+    }
+  }
+}
