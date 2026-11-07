@@ -35,6 +35,21 @@ suite('Path helpers', () => {
     assert.strictEqual(isSupportedResource(vscode.Uri.parse('untitled:Untitled-1')), false);
   });
 
+  test('filters a mixed-scheme selection down to the supported schemes', () => {
+    const mixed = [
+      vscode.Uri.parse('file:///a.ts'),
+      vscode.Uri.parse('vscode-remote://wsl%2Bubuntu/b.ts'),
+      vscode.Uri.parse('git:/c.ts'),
+      vscode.Uri.parse('untitled:Untitled-1'),
+      vscode.Uri.parse('vscode-remote://ssh-remote%2Bhost/d.ts')
+    ];
+    const supported = mixed.filter(isSupportedResource);
+    assert.deepStrictEqual(
+      supported.map((uri) => uri.toString()),
+      ['file:///a.ts', 'vscode-remote://wsl%2Bubuntu/b.ts', 'vscode-remote://ssh-remote%2Bhost/d.ts']
+    );
+  });
+
   test('leaves a file URI untouched before stat', () => {
     const uri = vscode.Uri.parse('file:///home/user/project/a.ts');
     assert.strictEqual(toStatUri(uri).toString(), uri.toString());

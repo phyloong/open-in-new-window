@@ -2,7 +2,7 @@
   "name": "new-window-here",
   "displayName": "New Window Here",
   "description": "Open files, folders and remote contexts in a new VS Code window.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "publisher": "amapleaf",
   "license": "MIT",
   "repository": {
@@ -33,18 +33,22 @@
         "title": "Open in New Window"
       }
     ],
+    "configuration": {
+      "title": "Open in New Window",
+      "properties": {
+        "openInNewWindow.allowMultiSelection": {
+          "type": "boolean",
+          "default": false,
+          "description": "Allow one invocation to open more than one target: show the Explorer item for a multi-selection and let the Command Palette picker accept several targets, opening one new window per selected resource."
+        }
+      }
+    },
     "menus": {
       "explorer/context": [
         {
           "command": "openInNewWindow.open",
-          "when": "(resourceScheme == file || resourceScheme == 'vscode-remote') && !listMultiSelection",
+          "when": "(resourceScheme == file || resourceScheme == 'vscode-remote') && (!listMultiSelection || config.openInNewWindow.allowMultiSelection)",
           "group": "navigation@10"
-        }
-      ],
-      "commandPalette": [
-        {
-          "command": "openInNewWindow.open",
-          "when": "false"
         }
       ]
     }

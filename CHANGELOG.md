@@ -5,6 +5,18 @@ Check [Keep a Changelog](http://keepachangelog.com/) for the recommended structu
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-11-07
+
+### Added
+
+- `openInNewWindow.allowMultiSelection` setting (default `false`): when enabled, the Explorer item is shown for a multi-selection and the Command Palette picker accepts several targets, opening one new window per selected resource.
+- **Open in New Window** in the Command Palette: invoked without a resource, it shows a file picker that accepts a folder, a file or a `.code-workspace` file; cancelling the picker opens no window and shows no error.
+
+### Changed
+
+- A `.code-workspace` target now opens as that workspace in the new window instead of opening as a plain file inside its containing folder.
+- An unreadable target now reports an error and is skipped while the remaining selected targets still open.
+
 ## [0.1.0] - 2026-11-05
 
 ### Added
